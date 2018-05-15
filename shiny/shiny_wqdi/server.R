@@ -47,7 +47,8 @@ server <- function(input, output, session) {
       cols.vec <- unique(names(inventory.df))
     } else {
       cols.vec <- unique(names(inventory.df))
-      cols.vec <- cols.vec[!cols.vec %in% c(input$param.col.1, input$param.col2)]
+      cols.vec <-
+        cols.vec[!cols.vec %in% c(input$param.col.1, input$param.col2)]
     }
     selectInput("param.col.3", "Column:",
                 c("None", cols.vec),
@@ -63,37 +64,49 @@ server <- function(input, output, session) {
                 multiple = TRUE)
   })
   #------------------------------------------------------------------------------
-  inventory.rec <- eventReactive(c(input$param.select.1, input$param.select.2, input$param.select.3), {
-    req(inventory.df)
-     req(input$param.col.1)
-     req(input$param.col.2)
-     req(input$param.col.3)
-    
-    final.df <- inventory.df
-    
-    if (input$param.col.1 != "None" & !is.null(input$param.select.1)) {
-      # req(input$param.select.1)
-      col <- rlang::sym(input$param.col.1)
-      final.df <- filter(final.df, !!col %in% input$param.select.1)
-    }
-    if (input$param.col.2 != "None" & !is.null(input$param.select.2)) {
-      # req(input$param.select.2)
-      col <- rlang::sym(input$param.col.2)
-      final.df <- filter(final.df, !!col %in% input$param.select.2)
-    }
-    if (input$param.col.3 != "None" & !is.null(input$param.select.3)) {
-      # req(input$param.select.3)
-      col <- rlang::sym(input$param.col.3)
-      final.df <- filter(final.df, !!col %in% input$param.select.3)
-    }
-    
-    return(final.df)
-  }, ignoreNULL = FALSE, ignoreInit = FALSE)
+  inventory.rec <-
+    eventReactive(
+      c(
+        input$param.select.1,
+        input$param.select.2,
+        input$param.select.3
+      ),
+      {
+        req(inventory.df)
+        req(input$param.col.1)
+        req(input$param.col.2)
+        req(input$param.col.3)
+        
+        final.df <- inventory.df
+        
+        if (input$param.col.1 != "None" &
+            !is.null(input$param.select.1)) {
+          col <- rlang::sym(input$param.col.1)
+          final.df <- filter(final.df,!!col %in% input$param.select.1)
+        }
+        if (input$param.col.2 != "None" &
+            !is.null(input$param.select.2)) {
+          col <- rlang::sym(input$param.col.2)
+          final.df <- filter(final.df,!!col %in% input$param.select.2)
+        }
+        if (input$param.col.3 != "None" &
+            !is.null(input$param.select.3)) {
+          col <- rlang::sym(input$param.col.3)
+          final.df <- filter(final.df,!!col %in% input$param.select.3)
+        }
+        
+        return(final.df)
+      },
+      ignoreNULL = FALSE,
+      ignoreInit = FALSE
+    )
   
   output$filter.message <- renderUI({
     req(inventory.rec())
-    if (nrow(inventory.rec()) == 0) "No data available for this filtering combination."
-    else ""
+    if (nrow(inventory.rec()) == 0)
+      "No data available for this filtering combination."
+    else
+      ""
   })
   #------------------------------------------------------------------------------
   #callModule(leaflet_plot, "leaflet", inventory.rec, input$param.select.1)
