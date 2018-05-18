@@ -22,6 +22,7 @@ leaflet_plot <- function(input, output, session, data.df, param.1) {
   
   output$mymap <- leaflet::renderLeaflet({
     leaflet::leaflet(options = leaflet::leafletOptions(maxBoundsViscosity = 1)) %>%
+      
       leaflet::addTiles(options = leaflet::tileOptions(minZoom = 7, maxZoom = 18)) %>% 
       leaflet::setMaxBounds(lng1 = -81, lat1 = 37.75, lng2 = -75, lat2 = 40.25) %>%
       leaflet::setView(-78.110291, lat = 39.029230, zoom = 8) 

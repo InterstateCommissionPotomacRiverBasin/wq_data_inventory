@@ -14,13 +14,15 @@ dt_table <- function(input, output, session, data.df) {
   output$dt_table <- DT::renderDataTable({
   validate(need(data.df(), "data.df not found"))
     validate(need(nrow(data.df()) > 0, "No data available for this filtering combination."))
-    
-  DT::datatable(data.df(),
-                class = 'cell-border stripe',
-                filter = 'top',
+    data.df <- data.df() %>% 
+      rename_all(funs(stringr::str_replace_all(., "_", " "))) %>% 
+      rename_all(stringr::str_to_title) 
+  DT::datatable(data.df,
+                class = 'nowrap cell-border stripe',
                 options = list(
+                  dom = "lt",
                   scrollX = TRUE,
-                  scrollY = "500px",
+                  scrollY = "400px",
                   pageLength = 10,
                   autoWidth = TRUE
                 )

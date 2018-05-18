@@ -1,0 +1,13 @@
+name: shiny_wqdi
+title: shiny_wqdi
+username:
+account: zsmith
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 343396
+bundleId: 1380835
+url: https://zsmith.shinyapps.io/shiny_wqdi/
+when: 1526657034.54406
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: db_connect/db_connect.R|modules/module_leaflet.R|test

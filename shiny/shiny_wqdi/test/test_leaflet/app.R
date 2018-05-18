@@ -18,7 +18,7 @@ ui <- fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-      selectInput("param.select", "Parameter:",
+      selectInput("filter.select", "Parameter:",
                   c("All", unique(inventory.df$metric_parameter)),
                   selected = "All")
     ),
@@ -35,10 +35,10 @@ server <- function(input, output, session) {
   
   data.df <- reactive({
     req(inventory.df)
-    if (input$param.select == "All") {
+    if (input$filter.select == "All") {
       inventory.df
     } else {
-      filter(inventory.df, metric_parameter == input$param.select)
+      filter(inventory.df, metric_parameter == input$filter.select)
     }
     
   })
