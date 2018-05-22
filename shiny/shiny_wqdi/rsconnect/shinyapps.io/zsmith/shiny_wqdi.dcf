@@ -5,9 +5,9 @@ account: zsmith
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 343396
-bundleId: 1380835
+bundleId: 1385866
 url: https://zsmith.shinyapps.io/shiny_wqdi/
-when: 1526657034.54406
+when: 1526954171.9863
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: db_connect/db_connect.R|modules/module_leaflet.R|test
+ignoredFiles: data/WQinventory_WebMaster_20180413.xlsx|db_connect/db_connect.R|modules/module_leaflet.R|test

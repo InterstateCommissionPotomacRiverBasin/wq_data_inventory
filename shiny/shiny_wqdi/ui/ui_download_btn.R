@@ -1,7 +1,7 @@
 fluidRow(
 column(
   width = 12,
-  dt_output("dt"),
+  dt_output("program_dt"),
   br(),
   column(width = 6,
          div(p(

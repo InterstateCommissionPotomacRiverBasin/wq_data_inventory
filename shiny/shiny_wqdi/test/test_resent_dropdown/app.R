@@ -19,11 +19,11 @@ ui <- fluidPage(
    sidebarLayout(
       sidebarPanel(
         h3("Primary Filter"),
-        uiOutput("filter.col.1"),
+        uiOutput("filter_col_1"),
         h3("Secondary Filter"),
-        uiOutput("filter.select.1"),
+        uiOutput("filter_select_1"),
         actionButton("reset", "Reset Filter"),
-        conditionalPanel('input.filter.select.1 > 0',
+        conditionalPanel('input.filter_select_1 > 0',
           "IT WORKED!!!"
         )
       ),
@@ -38,23 +38,23 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output, session) {
    
-  output$filter.col.1 <- renderUI({
+  output$filter_col_1 <- renderUI({
     req(inventory.df)
-    selectInput("filter.col.1", "Column:",
+    selectInput("filter_col_1", "Column:",
                 c("None", unique(names(inventory.df))),
                 selected = "None")
   })
   #------------------------------------------------------------------------------
-  output$filter.select.1 <- renderUI({
+  output$filter_select_1 <- renderUI({
     req(inventory.df)
-    req(input$filter.col.1)
-    selectInput("filter.select.1", "Parameter:",
-                c(unique(inventory.df[, names(inventory.df) == input$filter.col.1])),
+    req(input$filter_col_1)
+    selectInput("filter_select_1", "Parameter:",
+                c(unique(inventory.df[, names(inventory.df) == input$filter_col_1])),
                 #selected = "All",
                 multiple = TRUE)
   })
   observeEvent(input$reset,{
-               updateSelectInput(session, "filter.col.1", selected = "None")
+               updateSelectInput(session, "filter_col_1", selected = "None")
                })
   
 }

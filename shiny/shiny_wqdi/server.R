@@ -10,9 +10,12 @@ server <- function(input, output, session) {
   })
   #------------------------------------------------------------------------------
   source("server/server_filter.R", local = TRUE)
-  source("server/server_inventory_rec.R", local = TRUE)
-  source("server/server_leaflet.R", local = TRUE)
-  callModule(dt_table, "dt", inventory.rec)
+  source("server/server_program_rec.R", local = TRUE)
+  callModule(dt_table, "program_dt", program.rec)
+  source("server/server_site_rec.R", local = TRUE)
+  callModule(dt_table, "site_dt", site.rec)
+  # source("server/server_leaflet.R", local = TRUE)
+  
   source("server/server_downloads.R", local = TRUE)
   source("server/server_output_options.R", local = TRUE)
   

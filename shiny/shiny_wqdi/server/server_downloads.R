@@ -3,7 +3,7 @@ output$download.inv.rec <- downloadHandler(
     paste('wqdi_', format(Sys.time(), "%Y_%m_%d_%H%M%S"), '.csv', sep = '')
   },
   content = function(con) {
-    write.csv(inventory.rec(), con)
+    write.csv(program.rec(), con)
   }
 )
 

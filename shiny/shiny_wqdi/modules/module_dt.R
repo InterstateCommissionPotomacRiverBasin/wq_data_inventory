@@ -20,7 +20,7 @@ dt_table <- function(input, output, session, data.df) {
   DT::datatable(data.df,
                 class = 'nowrap cell-border stripe',
                 options = list(
-                  dom = "lt",
+                  dom = "lti",
                   scrollX = TRUE,
                   scrollY = "400px",
                   pageLength = 10,

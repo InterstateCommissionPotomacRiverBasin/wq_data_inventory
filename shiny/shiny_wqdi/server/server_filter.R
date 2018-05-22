@@ -1,91 +1,109 @@
-col.vec <- c("source", "site_location", "purpose", "coverage_description",
-              "period_of_record_start_date", "period_of_record_end_date",
-              "parameter_group")
+table.filter.cols <- c("parameter_group", "metric_parameter",
+                       "organization", "program_name", "site_location",
+                       "purpose", "collection_method", "spatial_coverage",
+                       "period_of_record_start_date", "period_of_record_end_date",
+                       "fall_line", "lat_long", "frequency_sampled",
+                       "data_type", "public_or_restricted_data",
+                       "dataset_fees")
+
 #------------------------------------------------------------------------------
-output$filter.col.1 <- renderUI({
+output$filter_col_1 <- renderUI({
   req(inventory.df)
-  selectInput("filter.col.1", "Column:",
-              c("None", col.vec),
+  selectInput("filter_col_1", "Column:",
+              c("None", table.filter.cols),
               selected = "None")
 })
 #------------------------------------------------------------------------------
-output$filter.select.1 <- renderUI({
+output$filter_select_1 <- renderUI({
   req(inventory.df)
-  req(input$filter.col.1)
-  selectInput("filter.select.1", "Options:",
-              c(unique(inventory.df[, names(inventory.df) == input$filter.col.1])),
+  req(input$filter_col_1)
+  selectInput("filter_select_1", "Options:",
+              c(unique(inventory.df[, names(inventory.df) == input$filter_col_1])),
               multiple = TRUE)
 })
 #------------------------------------------------------------------------------
-output$filter.col.2 <- renderUI({
-  req(input$filter.col.1)
-  if (input$filter.col.1 != "None") {
-    col.vec <- col.vec[!col.vec %in% input$filter.col.1]
+output$filter_col_2 <- renderUI({
+  req(input$filter_col_1)
+  if (input$filter_col_1 != "None") {
+    table.filter.cols <- table.filter.cols[!table.filter.cols %in% input$filter_col_1]
   }
-  selectInput("filter.col.2", "Column:",
-              c("None", col.vec),
+  selectInput("filter_col_2", "Column:",
+              c("None", table.filter.cols),
               selected = "None")
 })
 #------------------------------------------------------------------------------
-output$filter.select.2 <- renderUI({
-  req(inventory.rec.1())
-  req(input$filter.col.2)
-  options.vec <- unique(inventory.rec.1()[, names(inventory.rec.1()) == input$filter.col.2])
-  selectInput("filter.select.2", "Options:",
+output$filter_select_2 <- renderUI({
+  req(program.rec.1())
+  req(input$filter_col_2)
+  options.vec <- unique(program.rec.1()[, names(program.rec.1()) == input$filter_col_2])
+  selectInput("filter_select_2", "Options:",
               options.vec,
               multiple = TRUE)
 })
 #------------------------------------------------------------------------------
-output$filter.col.3 <- renderUI({
-  req(input$filter.col.1)
-  req(input$filter.col.2)
-  if (input$filter.col.1 != "None" | input$filter.col.2 != "None") {
-    col.vec <- col.vec[!col.vec %in% c(input$filter.col.1, input$filter.col.2)]
+output$filter_col_3 <- renderUI({
+  req(input$filter_col_1)
+  req(input$filter_col_2)
+  if (input$filter_col_1 != "None" | input$filter_col_2 != "None") {
+    table.filter.cols <- table.filter.cols[!table.filter.cols %in% c(input$filter_col_1,
+                                                                     input$filter_col_2)]
   }
-  selectInput("filter.col.3", "Column:",
-              c("None", col.vec),
+  selectInput("filter_col_3", "Column:",
+              c("None", table.filter.cols),
               selected = "None")
 })
 #------------------------------------------------------------------------------
-output$filter.select.3 <- renderUI({
-  req(inventory.rec.2())
-  req(input$filter.col.3)
-  options.vec <- unique(inventory.rec.2()[, names(inventory.rec.2()) == input$filter.col.3])
-  selectInput("filter.select.3", "Options:",
+output$filter_select_3 <- renderUI({
+  req(program.rec.2())
+  req(input$filter_col_3)
+  options.vec <- unique(program.rec.2()[, names(program.rec.2()) == input$filter_col_3])
+  selectInput("filter_select_3", "Options:",
               options.vec,
               multiple = TRUE)
 })
 #------------------------------------------------------------------------------
 observeEvent(input$reset, {
-  updateSelectInput(session, "filter.col.1", selected = "None")
-  updateSelectInput(session, "filter.col.2", selected = "None")
-  updateSelectInput(session, "filter.col.3", selected = "None")
+  updateSelectInput(session, "filter_col_1", selected = "None")
+  updateSelectInput(session, "filter_col_2", selected = "None")
+  updateSelectInput(session, "filter_col_3", selected = "None")
 })
 #------------------------------------------------------------------------------
 # output$filter.message <- renderUI({
-#   req(inventory.rec())
-#   if (nrow(inventory.rec()) == 0)
+#   req(program.rec())
+#   if (nrow(program.rec()) == 0)
 #     "No data available for this filtering combination."
 #   else
 #     ""
 # })
 #------------------------------------------------------------------------------
-output$approvalBox <- renderValueBox({
-  if (nrow(inventory.rec()) == 0) {
+output$organization_count <- renderValueBox({
     valueBox(
-      "Number of points: 0", "Invalid Filter", icon = icon("thumbs-down", lib = "glyphicon"),
-      color = "red"#, fill = TRUE
-    )
-  } else {
-    valueBox(
-      paste("Number of points:",
-        prettyNum(nrow(inventory.rec()),
-                  big.mark = ",",
-                  scientific = FALSE)),
-      "Valid Filter", 
+      paste("Number of organizations:",
+            prettyNum(length(unique(program.rec()$organization)),
+                      big.mark = ",",
+                      scientific = FALSE)),
+      " ", 
       icon = icon("thumbs-up", lib = "glyphicon"),
       color = "blue"#, fill = TRUE
     )
-  }
+  })
+#------------------------------------------------------------------------------
+output$program_count <- renderValueBox({
+  # if (length(unique(program.rec()$program_name)) == 0) {
+  #   valueBox(
+  #     "Number of programs: 0", "Invalid Filter", icon = icon("thumbs-down", lib = "glyphicon"),
+  #     color = "red"#, fill = TRUE
+  #   )
+  # } else {
+    valueBox(
+      paste("Number of programs:",
+        prettyNum(length(unique(program.rec()$program_name)),
+                  big.mark = ",",
+                  scientific = FALSE)),
+      "Count", 
+      icon = icon("hashtag"),
+      color = "blue"#, fill = TRUE
+    )
+  # }
 })
 

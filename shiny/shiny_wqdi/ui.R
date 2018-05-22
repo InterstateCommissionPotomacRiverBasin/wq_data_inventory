@@ -9,8 +9,17 @@ ui <- fluidPage(useShinyjs(),
                   dashboardPage(
                     dashboardHeader(title = "Water Quality Data Inventory: Beta",
                                     titleWidth = 400),
-                    dashboardSidebar(disable = TRUE),
-                    dashboardBody(fluidPage(fluidRow(
+                    # dashboardSidebar(disable = TRUE),
+                    dashboardSidebar(width = 400,
+                    sidebarMenu(
+                      menuItem("Information", tabName = "info_tab", icon = icon("info-circle")),
+                      menuItem("Tabular", tabName = "tabular_tab", icon = icon("table"))
+                    )
+                  ),
+                    dashboardBody(
+                      # tabItems(
+                      #   tabItem(tabName = "info_tab",
+                      fluidPage(fluidRow(
                       column(width = 4,
                              fluidRow(
                                tabBox(
@@ -31,15 +40,18 @@ ui <- fluidPage(useShinyjs(),
                                           source("ui/ui_filter.R", local = TRUE)$value)
                                ),
                                  br(),
-                                 valueBoxOutput("approvalBox", width = 12)
+                                 valueBoxOutput("program_count", width = 12)
                                
                              )),
                       column(width = 8,
                              tabBox(
                                width = 12,
                                height = 700,
-                               tabPanel("Table", icon = icon("table"),
-                                        source("ui/ui_download_btn.R", local = TRUE)$value
+                               tabPanel("Program", icon = icon("table"),
+                                        dt_output("program_dt")
+                               ),
+                               tabPanel("Site", icon = icon("table"),
+                                        dt_output("site_dt")
                                ),
                                tabPanel(
                                  "Map",
@@ -47,9 +59,10 @@ ui <- fluidPage(useShinyjs(),
                                  fluidRow(column(
                                    width = 12,
                                    tagList(
-                                     leaflet::leafletOutput("mymap",
-                                                            height = "590px",
-                                                            width = "100%")
+                                     "In Development..."
+                                     # leaflet::leafletOutput("mymap",
+                                     #                        height = "590px",
+                                     #                        width = "100%")
                                    )
                                  ))
                                )
