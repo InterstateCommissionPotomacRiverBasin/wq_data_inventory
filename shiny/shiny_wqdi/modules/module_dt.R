@@ -20,11 +20,12 @@ dt_table <- function(input, output, session, data.df) {
   DT::datatable(data.df,
                 class = 'nowrap cell-border stripe',
                 options = list(
-                  dom = "lti",
+                  dom = "ltip",
                   scrollX = TRUE,
-                  scrollY = "400px",
-                  pageLength = 10,
-                  autoWidth = TRUE
+                  scrollY = "600px",
+                  pageLength = 50,
+                  # autoWidth = TRUE
+                  columnDefs = list(list(className = 'dt-center', targets = "_all"))
                 )
                 )
 })

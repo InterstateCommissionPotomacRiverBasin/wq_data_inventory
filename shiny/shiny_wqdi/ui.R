@@ -1,5 +1,3 @@
-library(shinyjs)
-
 # UI---------------------------------------------------------------------------
 ui <- fluidPage(useShinyjs(),
                 includeCSS("www/styles.css"),
@@ -11,64 +9,74 @@ ui <- fluidPage(useShinyjs(),
                                     titleWidth = 400),
                     # dashboardSidebar(disable = TRUE),
                     dashboardSidebar(width = 400,
-                    sidebarMenu(
-                      menuItem("Information", tabName = "info_tab", icon = icon("info-circle")),
-                      menuItem("Tabular", tabName = "tabular_tab", icon = icon("table"))
+                                     sidebarMenu(
+                                       menuItem(
+                                         "Information",
+                                         tabName = "info_tab",
+                                         icon = icon("info-circle")
+                                       ),
+                                       menuItem("Tabular", tabName = "tabular_tab", icon = icon("table")),
+                                       menuItem("Map", tabName = "map_tab", icon = icon("globe"))
+                                     )),
+                    dashboardBody(tabItems(
+                      tabItem(tabName = "info_tab",
+                              fluidPage(fluidRow(
+                                column(width = 12,
+                                       fluidRow(
+                                         box(
+                                           width = 12,
+                                           title = tagList(shiny::icon("inco-circle"), "Information"),
+                                           solidHeader = TRUE,
+                                           status = "primary",
+                                           source("ui/ui_info.R", local = TRUE)$value
+                                         ),
+                                         box(
+                                           width = 12,
+                                           title = tagList(shiny::icon("graduation-cap"), "Instructions"),
+                                           solidHeader = TRUE,
+                                           status = "primary",
+                                           source("ui/ui_instructions.R", local = TRUE)$value
+                                         )
+                                       ))
+                              ))),
+                      tabItem(tabName = "tabular_tab",
+                              fluidPage(fluidRow(
+                                column(
+                                  width = 4,
+                                  box(width = 12,
+                                      title = tagList(shiny::icon("filter"), "Filter"),
+                                      solidHeader = TRUE,
+                                      status = "primary",
+                                      source("ui/ui_filter.R", local = TRUE)$value),
+                                  br(),
+                                  valueBoxOutput("program_count", width = 12)
+                                ),
+                                column(width = 8,
+                                       tabBox(
+                                         width = 12,
+                                         height = 700,
+                                         tabPanel("Program", icon = icon("table"),
+                                                  dt_output("program_dt")),
+                                         tabPanel("Site", icon = icon("table"),
+                                                  dt_output("site_dt"))
+                                       ))
+                              ))),
+                      tabItem(tabName = "map_tab",
+                              fluidPage(fluidRow(
+                                column(width = 4,
+                                       box(width = 12,
+                                           source("ui/ui_leaflet_filter.R", local = TRUE)$value),
+                                       br(),
+                                       valueBoxOutput("leaflet_point_count", width = 12)),
+                                column(width = 8,
+                                       box(width = 12,
+                                           leaflet::leafletOutput("mymap",
+                                                                  height = "590px",
+                                                                  width = "100%")
+                                       ))
+                              ))
+
                     )
-                  ),
-                    dashboardBody(
-                      # tabItems(
-                      #   tabItem(tabName = "info_tab",
-                      fluidPage(fluidRow(
-                      column(width = 4,
-                             fluidRow(
-                               tabBox(
-                                 width = 12,
-                                 tabPanel("Information",
-                                          icon = icon("info-circle"),
-                                          source("ui/ui_info.R", local = TRUE)$value),
-                                 tabPanel(
-                                   "Instructions",
-                                   icon = icon("graduation-cap"),
-                                   div(style = 'height: 610px; overflow-y: scroll;',
-                                       uiOutput('instructions'))
-                                 ),
-                                 tabPanel("Filter",
-                                          id = "filter",
-                                          value = 1,
-                                          icon = icon("filter"),
-                                          source("ui/ui_filter.R", local = TRUE)$value)
-                               ),
-                                 br(),
-                                 valueBoxOutput("program_count", width = 12)
-                               
-                             )),
-                      column(width = 8,
-                             tabBox(
-                               width = 12,
-                               height = 700,
-                               tabPanel("Program", icon = icon("table"),
-                                        dt_output("program_dt")
-                               ),
-                               tabPanel("Site", icon = icon("table"),
-                                        dt_output("site_dt")
-                               ),
-                               tabPanel(
-                                 "Map",
-                                 icon = icon("globe"),
-                                 fluidRow(column(
-                                   width = 12,
-                                   tagList(
-                                     "In Development..."
-                                     # leaflet::leafletOutput("mymap",
-                                     #                        height = "590px",
-                                     #                        width = "100%")
-                                   )
-                                 ))
-                               )
-                               
-                               )
-                             ))
-                    )))
-                  )
-                ))
+                    ))
+                )))
+)

@@ -14,10 +14,10 @@ server <- function(input, output, session) {
   callModule(dt_table, "program_dt", program.rec)
   source("server/server_site_rec.R", local = TRUE)
   callModule(dt_table, "site_dt", site.rec)
-  # source("server/server_leaflet.R", local = TRUE)
-  
-  source("server/server_downloads.R", local = TRUE)
-  source("server/server_output_options.R", local = TRUE)
-  
+  source("server/server_leaflet_filter.R", local = TRUE)
+  source("server/server_map_rec.R", local = TRUE)
+  source("server/server_leaflet.R", local = TRUE)
+  # source("server/server_downloads.R", local = TRUE)
+  # source("server/server_output_options.R", local = TRUE)
 
 }

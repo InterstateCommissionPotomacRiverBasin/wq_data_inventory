@@ -1,5 +1,5 @@
 tags$div(
-  h3("Filter Tab"),
+  h4("Filter Tab"),
   p(
     'The "Filter" tab allows the user to select a column in the',
     "inventory and a feature or multiple features of that column to filter the data.",
@@ -17,7 +17,7 @@ tags$div(
     "user that there is no data available for that particular filter."
   ),
   br(),
-  h3("Map Tab"),
+  h4("Map Tab"),
   p(
     'The map displays water quality monitoring locations that are',
     'currently included in the inventory.',
@@ -37,7 +37,7 @@ tags$div(
     "Some of the points have hyperlinks to the data provider's website."
   ),
   br(),
-  h3("Table Tab"),
+  h4("Table Tab"),
   p(
     "This tab enables the user to view the data in a tabular format.",
     "The table is interactive.",

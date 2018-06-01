@@ -10,7 +10,7 @@ table.filter.cols <- c("parameter_group", "metric_parameter",
 output$filter_col_1 <- renderUI({
   req(inventory.df)
   selectInput("filter_col_1", "Column:",
-              c("None", table.filter.cols),
+              c("None",  table.filter.cols),
               selected = "None")
 })
 #------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ output$program_count <- renderValueBox({
   #   )
   # } else {
     valueBox(
-      paste("Number of programs:",
+      paste("Programs:",
         prettyNum(length(unique(program.rec()$program_name)),
                   big.mark = ",",
                   scientific = FALSE)),
