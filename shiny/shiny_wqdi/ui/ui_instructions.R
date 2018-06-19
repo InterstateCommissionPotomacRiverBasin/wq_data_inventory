@@ -17,26 +17,26 @@ tags$div(
     "user that there is no data available for that particular filter."
   ),
   br(),
-  h4("Map Tab"),
-  p(
-    'The map displays water quality monitoring locations that are',
-    'currently included in the inventory.',
-    "This is a subset of all the information included in the", 
-    "inventory's table view."
-  ),
-  p(
-    'By double-clicking, the user can zoom in to an area of interest.',
-    'Additionally, the user can hold shift, then click and drag to',
-    'create a zoom extent.',
-    'This enables the user to draw a box around an area of',
-    'interest and subsequently zoom in to that area.'
-  ),
-  p(
-    "Clicking on a point will provide a pop-up window with information",
-    "related to the selected point.",
-    "Some of the points have hyperlinks to the data provider's website."
-  ),
-  br(),
+  # h4("Map Tab"),
+  # p(
+  #   'The map displays water quality monitoring locations that are',
+  #   'currently included in the inventory.',
+  #   "This is a subset of all the information included in the", 
+  #   "inventory's table view."
+  # ),
+  # p(
+  #   'By double-clicking, the user can zoom in to an area of interest.',
+  #   'Additionally, the user can hold shift, then click and drag to',
+  #   'create a zoom extent.',
+  #   'This enables the user to draw a box around an area of',
+  #   'interest and subsequently zoom in to that area.'
+  # ),
+  # p(
+  #   "Clicking on a point will provide a pop-up window with information",
+  #   "related to the selected point.",
+  #   "Some of the points have hyperlinks to the data provider's website."
+  # ),
+  # br(),
   h4("Table Tab"),
   p(
     "This tab enables the user to view the data in a tabular format.",
