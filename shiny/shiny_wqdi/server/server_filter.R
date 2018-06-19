@@ -1,16 +1,26 @@
-table.filter.cols <- c("parameter_group", "metric_parameter",
+clean_filter_labels <- function(x) {
+  y <- stringr::str_replace_all(x, "_", " ") %>% 
+    stringr::str_to_title()
+  
+  sapply(y, function(i) {
+    stringr::str_replace_all(i, " ", "_") %>% 
+      stringr::str_to_lower()
+  })
+}
+
+table.filter.cols <- c("None", "parameter_group", "metric_parameter",
                        "organization", "program_name", "site_location",
                        "purpose", "collection_method", "spatial_coverage",
                        "period_of_record_start_date", "period_of_record_end_date",
                        "fall_line", "lat_long", "frequency_sampled",
                        "data_type", "public_or_restricted_data",
-                       "dataset_fees")
-
+                       "dataset_fees") %>% 
+  clean_filter_labels()
 #------------------------------------------------------------------------------
 output$filter_col_1 <- renderUI({
   req(inventory.df)
   selectInput("filter_col_1", "Column:",
-              c("None",  table.filter.cols),
+              choices = table.filter.cols,
               selected = "None")
 })
 #------------------------------------------------------------------------------
@@ -18,7 +28,10 @@ output$filter_select_1 <- renderUI({
   req(inventory.df)
   req(input$filter_col_1)
   selectInput("filter_select_1", "Options:",
-              c(unique(inventory.df[, names(inventory.df) == input$filter_col_1])),
+              # c(clean_filter_labels(
+              #   unique(inventory.df[, names(inventory.df) == input$filter_col_1])
+              # )),
+               c(unique(inventory.df[, names(inventory.df) == input$filter_col_1])),
               multiple = TRUE)
 })
 #------------------------------------------------------------------------------
@@ -28,7 +41,7 @@ output$filter_col_2 <- renderUI({
     table.filter.cols <- table.filter.cols[!table.filter.cols %in% input$filter_col_1]
   }
   selectInput("filter_col_2", "Column:",
-              c("None", table.filter.cols),
+              choices = table.filter.cols,
               selected = "None")
 })
 #------------------------------------------------------------------------------
@@ -49,7 +62,7 @@ output$filter_col_3 <- renderUI({
                                                                      input$filter_col_2)]
   }
   selectInput("filter_col_3", "Column:",
-              c("None", table.filter.cols),
+              choices = table.filter.cols,
               selected = "None")
 })
 #------------------------------------------------------------------------------
