@@ -19,6 +19,7 @@ dt_table <- function(input, output, session, data.df) {
       rename_all(stringr::str_to_title) 
   DT::datatable(data.df,
                 class = 'nowrap cell-border stripe',
+                escape = FALSE,
                 options = list(
                   dom = "ltip",
                   scrollX = TRUE,

@@ -94,6 +94,16 @@ program.rec <-
         # final.df <- filter(final.df, !!col %in% input$filter_select_3)
       }
       
+      final.df <- final.df %>% 
+        distinct() %>% 
+        mutate(data_link = if_else(data_link != "Unavailable",
+                                   paste0("<a href='", data_link, "' target = '_blank'", ">", data_link, "</a>"),
+                                   data_link),
+               program_website = if_else(program_website != "Unavailable",
+                                   paste0("<a href='", program_website, "' target = '_blank'", ">", program_website, "</a>"),
+                                   program_website)
+               )
+      
       return(final.df)
     },
     ignoreNULL = FALSE#,
