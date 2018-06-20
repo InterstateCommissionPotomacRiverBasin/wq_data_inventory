@@ -6,6 +6,7 @@ suppressPackageStartupMessages(library(DT))
 suppressPackageStartupMessages(library(data.table))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(shinyjs))
+# suppressPackageStartupMessages(library(XLConnect))
 #Modules-----------------------------------------------------------------------
 source("modules/module_dt.R")
 #Functions---------------------------------------------------------------------
@@ -20,6 +21,14 @@ standard_names <- function(x) {
     dplyr::rename_all(funs(tolower(.) %>% trimws() %>% gsub("  | ", "_", .)))
 }
 #Data--------------------------------------------------------------------------
+colnames.df <- suppressWarnings(
+  data.table::fread("data/wqdi_colnames.csv",showProgress = FALSE)) %>% 
+  standard_names()
+
+acronyms.df <- suppressWarnings(
+  data.table::fread("data/wqdi_acronyms.csv",showProgress = FALSE)) %>% 
+  standard_names()
+
 inventory.df <- suppressWarnings(
   data.table::fread("data/wqdi.csv",showProgress = FALSE)) %>% 
   standard_names() %>% 
