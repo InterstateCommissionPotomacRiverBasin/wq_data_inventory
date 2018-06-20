@@ -3,22 +3,49 @@ fluidRow(
   column(width = 6, uiOutput("filter_col_1")),
   column(width = 6, uiOutput("filter_select_1")),
   br(),
-  conditionalPanel(condition = 'input.filter_col_1 != "None"',
+  conditionalPanel(condition = 'input.filter_col_1 != "none"',
   column(width = 12, h3("Secondary Filter")),
   column(width = 6, uiOutput("filter_col_2")),
-  column(width = 6, uiOutput("filter_select_2")),
+  column(width = 6, uiOutput("filter_select_2"))),
   br(),
-  conditionalPanel(condition = 'input.filter_col_2 != "None"',
+  conditionalPanel(condition = 'input.filter_col_2 != "none"',
   column(width = 12, h3("Tertiary Filter")),
   column(width = 6, uiOutput("filter_col_3")),
   column(width = 6, uiOutput("filter_select_3"))
-  )),
+  ),
   # column(width = 12,
   #        uiOutput("filter.message")),
   column(width = 12,
          actionButton("reset",
                       "Reset Filter",
                       icon = icon("undo"),
-                      style = "width:100%;")
-  )
+                      style = "width:100%; text-align: center;")
+  ),
+  br(),
+  hr()#,
+  # column(width = 12, h3("Download")),
+  # column(width = 12,
+  #            downloadButton('download.program.rec',
+  #                           'Download Filtered Program Data',
+  #                           class = "button",
+  #                           style = "width:100%;")
+  #        ),
+  # column(width = 12,
+  #            downloadButton('download.site.rec',
+  #                           'Download Filtered Site Data',
+  #                           class = "button",
+  #                           style = "width:100%;")
+  #        ),
+  # column(width = 12,
+  #        downloadButton('download.colnames',
+  #                       'Download Column Name Descriptions',
+  #                       class = "button",
+  #                       style = "width:100%;")
+  # ),
+  # column(width = 12,
+  #        downloadButton('download.acronyms',
+  #                       'Download Acronym Descriptions',
+  #                       class = "button",
+  #                       style = "width:100%;")
+  # )
 )
