@@ -17,7 +17,7 @@ server <- function(input, output, session) {
   # source("server/server_leaflet_filter.R", local = TRUE)
   # source("server/server_map_rec.R", local = TRUE)
   # source("server/server_leaflet.R", local = TRUE)
-  # source("server/server_downloads.R", local = TRUE)
+  source("server/server_downloads.R", local = TRUE)
   # source("server/server_output_options.R", local = TRUE)
 
 }
