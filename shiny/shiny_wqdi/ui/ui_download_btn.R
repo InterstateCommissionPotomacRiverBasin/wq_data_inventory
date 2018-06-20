@@ -15,7 +15,6 @@ column(
              downloadButton('download.inv.rec',
                             'Download Filtered Data',
                             class = "button"),
-             
              style = "text-align: center;"
            )
          ))
