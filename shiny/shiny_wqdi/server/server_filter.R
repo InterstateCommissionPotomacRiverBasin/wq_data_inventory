@@ -8,7 +8,7 @@ clean_filter_labels <- function(x) {
   })
 }
 
-table.filter.cols <- c("None", "parameter_group", "metric_parameter",
+table.filter.cols <- c("none", "parameter_group", "metric_parameter",
                        "organization", "program_name", "site_location",
                        "purpose", "collection_method", "spatial_coverage",
                        "period_of_record_start_date", "period_of_record_end_date",
@@ -21,7 +21,7 @@ output$filter_col_1 <- renderUI({
   req(inventory.df)
   selectInput("filter_col_1", "Column:",
               choices = table.filter.cols,
-              selected = "None")
+              selected = "none")
 })
 #------------------------------------------------------------------------------
 output$filter_select_1 <- renderUI({
@@ -37,12 +37,12 @@ output$filter_select_1 <- renderUI({
 #------------------------------------------------------------------------------
 output$filter_col_2 <- renderUI({
   req(input$filter_col_1)
-  if (input$filter_col_1 != "None") {
+  if (input$filter_col_1 != "none") {
     table.filter.cols <- table.filter.cols[!table.filter.cols %in% input$filter_col_1]
   }
   selectInput("filter_col_2", "Column:",
               choices = table.filter.cols,
-              selected = "None")
+              selected = "none")
 })
 #------------------------------------------------------------------------------
 output$filter_select_2 <- renderUI({
@@ -57,13 +57,13 @@ output$filter_select_2 <- renderUI({
 output$filter_col_3 <- renderUI({
   req(input$filter_col_1)
   req(input$filter_col_2)
-  if (input$filter_col_1 != "None" | input$filter_col_2 != "None") {
+  if (input$filter_col_1 != "none" | input$filter_col_2 != "none") {
     table.filter.cols <- table.filter.cols[!table.filter.cols %in% c(input$filter_col_1,
                                                                      input$filter_col_2)]
   }
   selectInput("filter_col_3", "Column:",
               choices = table.filter.cols,
-              selected = "None")
+              selected = "none")
 })
 #------------------------------------------------------------------------------
 output$filter_select_3 <- renderUI({
@@ -76,9 +76,9 @@ output$filter_select_3 <- renderUI({
 })
 #------------------------------------------------------------------------------
 observeEvent(input$reset, {
-  updateSelectInput(session, "filter_col_1", selected = "None")
-  updateSelectInput(session, "filter_col_2", selected = "None")
-  updateSelectInput(session, "filter_col_3", selected = "None")
+  updateSelectInput(session, "filter_col_1", selected = "none")
+  updateSelectInput(session, "filter_col_2", selected = "none")
+  updateSelectInput(session, "filter_col_3", selected = "none")
 })
 #------------------------------------------------------------------------------
 # output$filter.message <- renderUI({
