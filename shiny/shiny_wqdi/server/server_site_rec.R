@@ -9,7 +9,8 @@ site.rec <-eventReactive(
       req(site.df)
       
       site.df %>% 
-        filter(organization %in% unique(program.rec()$organization))
+        filter(organization %in% unique(program.rec()$organization)) %>% 
+        distinct()
     },
     ignoreNULL = FALSE#,
     #ignoreInit = FALSE
