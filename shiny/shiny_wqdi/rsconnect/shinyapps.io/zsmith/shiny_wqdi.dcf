@@ -5,9 +5,9 @@ account: zsmith
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 343396
-bundleId: 1438168
+bundleId: 1439465
 url: https://zsmith.shinyapps.io/shiny_wqdi/
-when: 1529442909.03359
+when: 1529505846.13634
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: data/WQ_Map_Points_052218HUC_St_Cnty_nam.xlsx|db_connect/db_connect.R
+ignoredFiles: db_connect/db_connect.R
