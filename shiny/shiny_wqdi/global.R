@@ -20,32 +20,33 @@ standard_names <- function(x) {
   x %>% 
     dplyr::rename_all(funs(tolower(.) %>% trimws() %>% gsub("  | ", "_", .)))
 }
-#Data--------------------------------------------------------------------------
+#Import Data--------------------------------------------------------------------------
+
 colnames.df <- suppressWarnings(
   data.table::fread("data/wqdi_colnames.csv",showProgress = FALSE)) %>% 
   standard_names()
-
+#------------------------------------------------------------------------------
 acronyms.df <- suppressWarnings(
   data.table::fread("data/wqdi_acronyms.csv",showProgress = FALSE)) %>% 
   standard_names()
-
+#------------------------------------------------------------------------------
 inventory.df <- suppressWarnings(
   data.table::fread("data/wqdi.csv", showProgress = FALSE)) %>% 
   standard_names() %>% 
   dplyr::rename(source_no = "monitoring_station") %>% 
   select(source_no, lat, long)
-
+#------------------------------------------------------------------------------
 meta.df <- suppressWarnings(
   data.table::fread("data/icprb_metadata.csv",
                                               showProgress = FALSE)) %>%               
   standard_names() %>% 
   dplyr::rename(organization = "originator")
-
+#------------------------------------------------------------------------------
 inventory.df <- full_join(inventory.df, meta.df, by = c("source_no"))
 inventory.df[inventory.df == "N/A"] <- "Unavailable"
 inventory.df[is.na(inventory.df)] <- "Unavailable"
 rm(meta.df)
-
+#------------------------------------------------------------------------------
 
 
 program.cols <- c("organization", "program_name", "site_location",
@@ -61,7 +62,7 @@ program.df <- inventory.df[, names(inventory.df) %in% program.cols]
 
 site.cols <- c("organization", "program name", "station_id", "lat", "long")
 site.df <- inventory.df[, names(inventory.df) %in% site.cols]
-
+#------------------------------------------------------------------------------
 map.df <- suppressWarnings(
   data.table::fread("data/WQ_Map_Points_052218HUC_St_Cnty_nam.csv",
                     showProgress = FALSE,
