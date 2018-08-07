@@ -30,9 +30,9 @@ acronyms.df <- suppressWarnings(
   standard_names()
 
 inventory.df <- suppressWarnings(
-  data.table::fread("data/wqdi.csv",showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi.csv", showProgress = FALSE)) %>% 
   standard_names() %>% 
-  dplyr::rename(source_no = "monitoring_station_\n(source_no)") %>% 
+  dplyr::rename(source_no = "monitoring_station") %>% 
   select(source_no, lat, long)
 
 meta.df <- suppressWarnings(

@@ -1,5 +1,4 @@
-Station_ID,Lat,Long,"Monitoring Station 
-(Source_No)",Agency,Contact,Data Link
+Station_ID,Lat,Long,Monitoring Station,Agency,Contact,Data Link
 14112,38.891564,-77.062457,ICPRB-336,DDOE,"Jeffery Zahn, 202-369-3636, jeffrey.zahn@dc.gov",http://www.ysieconet.com/public/WebUI/Default.aspx?hidCustomerID=167
 00016CAD,38.870692,-77.005435,ICPRB-345,DDOE,"Jeffery Zahn, 202-369-3636, jeffrey.zahn@dc.gov",http://www.ysieconet.com/public/WebUI/Default.aspx?hidCustomerID=167
 000177B8,38.896063,-76.961201,ICPRB-352,DDOE,"Jeffery Zahn, 202-369-3636, jeffrey.zahn@dc.gov",http://www.ysieconet.com/public/WebUI/Default.aspx?hidCustomerID=167
