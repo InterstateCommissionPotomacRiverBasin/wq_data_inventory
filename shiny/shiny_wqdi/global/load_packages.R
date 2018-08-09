@@ -2,13 +2,6 @@
 # https://www.r-bloggers.com/install-and-load-missing-specifiedneeded-packages-on-the-fly/
 # needed packages for a job
 
-suppressPackageStartupMessages(library(shiny))
-suppressPackageStartupMessages(library(shinydashboard))
-suppressPackageStartupMessages(library(leaflet))
-suppressPackageStartupMessages(library(DT))
-suppressPackageStartupMessages(library(data.table))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(shinyjs))
 need <- c("shiny",
           "shinydashboard",
           "leaflet",
