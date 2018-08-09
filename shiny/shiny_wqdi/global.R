@@ -1,21 +1,17 @@
 #Libraries-----------------------------------------------------------------------
-suppressPackageStartupMessages(library(shiny))
-suppressPackageStartupMessages(library(shinydashboard))
-suppressPackageStartupMessages(library(leaflet))
-suppressPackageStartupMessages(library(DT))
-suppressPackageStartupMessages(library(data.table))
-suppressPackageStartupMessages(library(dplyr))
-suppressPackageStartupMessages(library(shinyjs))
-# suppressPackageStartupMessages(library(XLConnect))
+source("global/load_packages.R", local = TRUE)
 #Modules-----------------------------------------------------------------------
 source("modules/module_dt.R")
 #Functions---------------------------------------------------------------------
+
+# Function enables the loading page feature of this app.
 load_data <- function() {
   Sys.sleep(2)
   hide("loading_page")
   show("main_content")
 }
 
+# Standardize data frame column names.
 standard_names <- function(x) {
   x %>% 
     dplyr::rename_all(funs(tolower(.) %>% trimws() %>% gsub("  | ", "_", .)))
@@ -47,8 +43,6 @@ inventory.df[inventory.df == "N/A"] <- "Unavailable"
 inventory.df[is.na(inventory.df)] <- "Unavailable"
 rm(meta.df)
 #------------------------------------------------------------------------------
-
-
 program.cols <- c("organization", "program_name", "site_location",
                   "purpose", "metric_parameter", "parameter_group",
                   "spatial_coverage", "fall_line", "lat_long",
@@ -63,15 +57,15 @@ program.df <- inventory.df[, names(inventory.df) %in% program.cols]
 site.cols <- c("organization", "program name", "station_id", "lat", "long")
 site.df <- inventory.df[, names(inventory.df) %in% site.cols]
 #------------------------------------------------------------------------------
-map.df <- suppressWarnings(
-  data.table::fread("data/WQ_Map_Points_052218HUC_St_Cnty_nam.csv",
-                    showProgress = FALSE,
-                    data.table = FALSE)) %>%               
-  standard_names() %>% 
-  rename(county = "county_1",
-         huc12 = "huc12_1", 
-         subwatershed = "name",
-         stream_name = "gnis_name") %>% 
-  mutate(huc12 = paste0("0", huc12))
+# map.df <- suppressWarnings(
+#   data.table::fread("data/WQ_Map_Points_052218HUC_St_Cnty_nam.csv",
+#                     showProgress = FALSE,
+#                     data.table = FALSE)) %>%               
+#   standard_names() %>% 
+#   rename(county = "county_1",
+#          huc12 = "huc12_1", 
+#          subwatershed = "name",
+#          stream_name = "gnis_name") %>% 
+#   mutate(huc12 = paste0("0", huc12))
 
 #leaflet.df <- inventory.df[, names(inventory.df) %in% leaflet.filter.cols]
