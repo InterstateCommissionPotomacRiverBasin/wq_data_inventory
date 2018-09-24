@@ -67,7 +67,6 @@ map.df <- suppressWarnings(
                     showProgress = FALSE,
                     data.table = FALSE)) %>%               
   standard_names() %>% 
-  rename(county = "county_1",
          huc12 = "huc12_1", 
          subwatershed = "name",
          stream_name = "gnis_name") %>% 
