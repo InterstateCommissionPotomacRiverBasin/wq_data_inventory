@@ -62,14 +62,14 @@ program.df <- inventory.df[, names(inventory.df) %in% program.cols]
 site.cols <- c("organization", "program name", "station_id", "lat", "long")
 site.df <- inventory.df[, names(inventory.df) %in% site.cols]
 
-map.df <- suppressWarnings(
-  data.table::fread("data/WQ_Map_Points_052218HUC_St_Cnty_nam.csv",
-                    showProgress = FALSE,
-                    data.table = FALSE)) %>%               
-  standard_names() %>% 
-         huc12 = "huc12_1", 
-         subwatershed = "name",
-         stream_name = "gnis_name") %>% 
-  mutate(huc12 = paste0("0", huc12))
+#map.df <- suppressWarnings(
+ # data.table::fread("data/WQ_Map_Points_052218HUC_St_Cnty_nam.csv",
+  #                  showProgress = FALSE,
+   #                 data.table = FALSE)) %>%               
+ # standard_names() %>% 
+  #       huc12 = "huc12_1", 
+   #      subwatershed = "name",
+    #     stream_name = "gnis_name") %>% 
+  #mutate(huc12 = paste0("0", huc12))
 
 #leaflet.df <- inventory.df[, names(inventory.df) %in% leaflet.filter.cols]
