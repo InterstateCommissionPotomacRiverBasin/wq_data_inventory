@@ -55,7 +55,7 @@ program.cols <- c("program_name", "site_location",
                   "period_of_record_start_date", "period_of_record_end_date",
                   "collection_method", "update_frequency",
                   "public_or_restricted_data", "dataset_fees",
-                  "data_type", "program_website", "data_link")
+                  "data_type", "program_website", "data_link", "Source_no")
 program.df <- inventory.df[, names(inventory.df) %in% program.cols]
 
 site.cols <- c("program name", "station_id", "lat", "long")
