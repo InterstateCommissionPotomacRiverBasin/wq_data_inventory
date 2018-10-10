@@ -22,21 +22,21 @@ standard_names <- function(x) {
 }
 #Data--------------------------------------------------------------------------
 colnames.df <- suppressWarnings(
-  data.table::fread("data/wqdi_colnames.csv",showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi_colnames2.csv",showProgress = FALSE)) %>% 
   standard_names()
 
 acronyms.df <- suppressWarnings(
-  data.table::fread("data/wqdi_acronyms.csv",showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi_acronyms2.csv",showProgress = FALSE)) %>% 
   standard_names()
 
 inventory.df <- suppressWarnings(
-  data.table::fread("data/wqdi.csv", showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi2.csv", showProgress = FALSE)) %>% 
   standard_names() %>% 
   dplyr::rename(source_no = "monitoring_station") %>% 
   select(source_no, lat, long)
 
 meta.df <- suppressWarnings(
-  data.table::fread("data/icprb_metadata.csv",
+  data.table::fread("data/icprb_metadata2.csv",
                                               showProgress = FALSE)) %>%               
   standard_names()#%>% 
 #dplyr::rename(organization = "originator")

@@ -12,7 +12,6 @@ ui <- fluidPage(useShinyjs(),
                                      sidebarMenu(
                                        menuItem(
                                          "Information",
-                                         tabName = "info_tab",
                                          icon = icon("info-circle")
                                        ),
                                        menuItem("Tabular", tabName = "tabular_tab", icon = icon("table")),

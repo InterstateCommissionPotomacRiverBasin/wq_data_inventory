@@ -1,0 +1,31 @@
+column_name,description,notes
+Spatial_Coverage,Type of spatial coverage of monitoring network,"Country, County, Point, State, Watershed"
+Coverage_Description,Monitoring site location or spatial extent of monitoring network,
+Period_of_Record_Start_Date,Date data collection began,
+Period_of_Record_End_Date,Most recent data as of date of validation,"If data collection is ongoing, the end date equals the validation date"
+Update_Frequency,Frequency of data collection,How often the database/website is updated with the new monitoring data
+Lat_Long,Are the latitude and longitude available for the site(s)?,Yes or No
+Public_or_Restricted_Data,Is the data public or restricted?,
+Dataset_Fees,Is a fee is required to purchase the dataset?,"Y: Yes, N: No"
+Metric_Parameter,Name of parameter,This field can be used for advanced searching of parameters
+Parameter_Group,More general groupings of data parameters,This field can be used for more generalized searching of parameters
+Number_of_Sites_Sampled,Number of sites sampled,"Number of sites sampled as part of this program, this should be a number or an entry indicating no data or n/a."
+Frequency_Sampled,Frequency sampled,How often the sampling takes place. The contents of this field are currently variable; there needs to be a dictionary that defines what each of these means. Or reduce the possible contents.
+Analysis_Method,Applicable to chemical parameters requiring lab analysis,This information will be obtained as time becomes available.
+Detection_Limit,Detection limit,Lowest concentration of a substance the can be determined w/confidence. This information will be obtained as time becomes available.
+Quantitation_Limits,Information on pratical quantitation limits (Y:Yes),"Information on pratical quantitation limits (Y=Yes; N=No). This information will be obtained as time becomes available. Is this variable depending on the jusristiction, i.e. state? "
+Reporting_Limits,Information on reporting limits (Y:Yes),Information on reporting limits (Y=Yes; N=No). This information will be obtained as time becomes available.
+Lab_Used,Name of laboratory used,Name of laboratory used. This information will be obtained as time becomes available.
+Lab_Certification,Certification of the laboratory analyzing the data,
+QA_QC_Program,Any Quality Assurance/Quality Control Program in place?,"Y: Yes, N: No"
+Funding_Source,Funding source and cost of program,"Funding partners are listed as described on the program site. However, in cases where USGS funding sources are not listed, the USGS maintenance artners are listed here. "
+Data_Type,Format of data available for download,"TAB: Tab-Separated, Exc: Excel, Vector: Vector shapefile, SHP: Shapefile, DBF: dBASE file, HTML & CSV: HyperText Markup Language & Comma Separatesd Value files, PDF: Portable Document Format, Portal: Online portal, Raster: geospatial raster, HTML: HyperText Markup Language, CSV: Comma Separated Value file, ACCESS: Microsoft ACCESS database file, Paper: paper documents"
+Dataset Type,"WQ: Water quality, WC: Watershed characteristic, FP: Field parameter",
+Validation_Author,Data validator,
+Validation_Date,Date data was validated,
+Notes,Additional information on the available data,
+Flag,Indicates that the data needs additional review,
+Flag_Author,Initials of person flagging a data source,
+Project_Name,"Name of the monitoring project, if applicable",
+Fall_Line,Were the data taken above or below the fall line?,"A: Above, B: Below, C: area of coverage includes both"
+Source_No,"Monitoring station number, assigned by ICPRB",Links the monitoring locations in the mapping inventory to the entries in the spreadsheet
