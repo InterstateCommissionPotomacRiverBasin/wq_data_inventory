@@ -20,4 +20,4 @@ Flag,Indicates that the data needs additional review,
 Flag_Author,Initials of person flagging a data source,
 Project_Name,"Name of the monitoring project, if applicable",
 Fall_Line,Were the data taken above or below the fall line?,"A: Above, B: Below, C: area of coverage includes both"
-Source_No,"Monitoring station number, assigned by ICPRB",Links the monitoring locations in the mapping inventory to the entries in the spreadsheet
+Source_no,"Monitoring station number, assigned by ICPRB",Links the monitoring locations in the mapping inventory to the entries in the spreadsheet

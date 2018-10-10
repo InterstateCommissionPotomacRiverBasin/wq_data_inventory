@@ -41,7 +41,7 @@ meta.df <- suppressWarnings(
   standard_names()#%>% 
 #dplyr::rename(organization = "originator")
 
-inventory.df <- full_join(inventory.df, meta.df, by = c("source_no"))
+#inventory.df <- full_join(inventory.df, meta.df, by = c("source_no"))
 inventory.df[inventory.df == "N/A"] <- "Unavailable"
 inventory.df[is.na(inventory.df)] <- "Unavailable"
 rm(meta.df)
