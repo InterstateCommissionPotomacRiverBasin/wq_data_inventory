@@ -15,7 +15,7 @@ dt_table <- function(input, output, session, data.df) {
   validate(need(data.df(), "data.df not found"))
     validate(need(nrow(data.df()) > 0, "No data available for this filtering combination."))
     data.df <- data.df() %>% 
-      rename_all(funs(stringr::str_replace_all(., "_", " "))) %>% 
+      rename_all(list(~stringr::str_replace_all(., "_", " "))) %>% 
       rename_all(stringr::str_to_title) 
   DT::datatable(data.df,
                 class = 'nowrap cell-border stripe',

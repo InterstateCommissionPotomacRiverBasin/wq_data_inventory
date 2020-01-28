@@ -14,7 +14,7 @@ load_data <- function() {
 # Standardize data frame column names.
 standard_names <- function(x) {
   x %>% 
-    dplyr::rename_all(funs(tolower(.) %>% trimws() %>% gsub("  | ", "_", .)))
+    dplyr::rename_all(list(~tolower(.) %>% trimws() %>% gsub("  | ", "_", .)))
 }
 #Import Data--------------------------------------------------------------------------
 
