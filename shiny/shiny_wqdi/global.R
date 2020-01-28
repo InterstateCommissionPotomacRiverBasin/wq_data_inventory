@@ -19,24 +19,28 @@ standard_names <- function(x) {
 #Import Data--------------------------------------------------------------------------
 
 colnames.df <- suppressWarnings(
-  data.table::fread("data/wqdi_colnames.csv",showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi_colnames.csv",showProgress = FALSE,
+                    data.table = FALSE, header = TRUE)) %>% 
   standard_names()
 #------------------------------------------------------------------------------
 acronyms.df <- suppressWarnings(
-  data.table::fread("data/wqdi_acronyms.csv",showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi_acronyms.csv",showProgress = FALSE,
+                    data.table = FALSE, header = TRUE)) %>% 
   standard_names()
 #------------------------------------------------------------------------------
 inventory.df <- suppressWarnings(
-  data.table::fread("data/wqdi.csv", showProgress = FALSE)) %>% 
+  data.table::fread("data/wqdi.csv", showProgress = FALSE,
+                    data.table = FALSE, header = TRUE)) %>% 
   standard_names() %>% 
-  dplyr::rename(source_no = "monitoring_station") %>% 
+  #dplyr::rename(source_no = "monitoring_station") %>% 
   select(source_no, lat, long)
 #------------------------------------------------------------------------------
 meta.df <- suppressWarnings(
   data.table::fread("data/icprb_metadata.csv",
-                                              showProgress = FALSE)) %>%               
-  standard_names() %>% 
-  dplyr::rename(organization = "originator")
+                                              showProgress = FALSE,
+                    data.table = FALSE, header = TRUE)) %>%               
+  standard_names() #%>% 
+  #dplyr::rename(organization = "originator")
 #------------------------------------------------------------------------------
 inventory.df <- full_join(inventory.df, meta.df, by = c("source_no"))
 inventory.df[inventory.df == "N/A"] <- "Unavailable"
