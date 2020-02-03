@@ -25,7 +25,7 @@
 
 library("shiny")
 library("shinydashboard")
-library("leaflet")
+#library("leaflet")
 library("DT")
 library("data.table")
 library("dplyr")

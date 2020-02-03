@@ -1,3 +1,5 @@
+#print(pryr::mem_used())
+
 #Libraries-----------------------------------------------------------------------
 source("global/load_packages.R", local = TRUE)
 #Modules-----------------------------------------------------------------------
@@ -10,6 +12,7 @@ load_data <- function() {
   hide("loading_page")
   show("main_content")
 }
+#print(pryr::mem_used())
 
 # Standardize data frame column names.
 standard_names <- function(x) {
@@ -73,3 +76,5 @@ site.df <- inventory.df[, names(inventory.df) %in% site.cols]
 #   mutate(huc12 = paste0("0", huc12))
 
 #leaflet.df <- inventory.df[, names(inventory.df) %in% leaflet.filter.cols]
+
+#print(pryr::mem_used())
