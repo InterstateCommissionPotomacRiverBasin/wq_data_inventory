@@ -1,0 +1,12 @@
+name: shiny_wqdi2
+title: shiny_wqdi2
+username:
+account: esharifi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1772495
+bundleId: 2780298
+url: https://esharifi.shinyapps.io/shiny_wqdi2/
+when: 1581013255.20173
+asMultiple: FALSE
+asStatic: FALSE

@@ -3,14 +3,14 @@ tags$div(
   p(
     'The "Filter" tab allows the user to select a column in the',
     "inventory and a feature or multiple features of that column to filter the data.",
-    'The filters will update data displayed in the "Map" and "Table" tabs.',
+    'The filters will update data displayed in the "Table" tab.',
     'If no filters are selected, then all the data will be displayed',
     "(i.e., the data is not subset by a filter)."),
   p(
     "It is possible to apply multiple filters that yield no data.",
     'For example, if the "Primary Filter" acts on the program name column',
-    'and the "Secondary Filter" acts on the contact name column,',
-    'then it is very easy to select a contact name in the "Secondary Filter"',
+    'and the "Secondary Filter" acts on the organization column,',
+    'then it is very easy to select a organization in the "Secondary Filter"',
     'that does not belong to the program name selected in the "Primary Filter:"',
     'ultimately resulting in no data to display.',
     "When this happens, several text-boxes will appear informing the",
