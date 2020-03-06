@@ -68,9 +68,9 @@ ui <- fluidPage(useShinyjs(),
                                          width = 12,
                                          height = 700,
                                          tabPanel("Program", icon = icon("table"),
-                                                  dt_output("program_dt")),
-                                         tabPanel("Site", icon = icon("table"),
-                                                  dt_output("site_dt"))
+                                                  dt_output("program_dt"))
+                                       #  tabPanel("Site", icon = icon("table"),
+                                        #          dt_output("site_dt"))
                                        ))
                               )))#,
                     #   tabItem(tabName = "map_tab",
