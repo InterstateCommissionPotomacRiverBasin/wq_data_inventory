@@ -6,12 +6,12 @@ fluidRow(
                         class = "button",
                         style = "width:100%;")
   ),
-  column(width = 12,
-         downloadButton('download.site.rec',
-                        'Download Site Data',
-                        class = "button",
-                        style = "width:100%;")
-  ),
+  # column(width = 12,
+  #     downloadButton('download.site.rec',
+                        #                   'Download Site Data',
+  #                    class = "button",
+  #                     style = "width:100%;")
+  # ),
   br(),
   column(width = 12, h3("Metadata")),
   column(width = 12,
