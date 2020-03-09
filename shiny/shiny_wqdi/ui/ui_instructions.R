@@ -3,18 +3,14 @@ tags$div(
   p(
     'The "Filter" tab allows the user to select a column in the',
     "inventory and a feature or multiple features of that column to filter the data.",
-    'The filters will update data displayed in the "Table" tab.',
-    'If no filters are selected, then all the data will be displayed',
-    "(i.e., the data is not subset by a filter)."),
+    'There are primary, secondary, and tertiary filters available.',
+    'The filters will update data displayed in the "Program" tab.',
+    'If no filters are selected, then all the',
+    "data in the Water Quality Data Inventory will be displayed."),
   p(
     "It is possible to apply multiple filters that yield no data.",
-    'For example, if the "Primary Filter" acts on the program name column',
-    'and the "Secondary Filter" acts on the organization column,',
-    'then it is very easy to select a organization in the "Secondary Filter"',
-    'that does not belong to the program name selected in the "Primary Filter:"',
-    'ultimately resulting in no data to display.',
-    "When this happens, several text-boxes will appear informing the",
-    "user that there is no data available for that particular filter."
+    'For example, if the selection in the Secondary Filter does not belong to',
+    "the selection in the Primary Filter the filter results in no data to display."
   ),
   br(),
   # h4("Map Tab"),
@@ -37,11 +33,33 @@ tags$div(
   #   "Some of the points have hyperlinks to the data provider's website."
   # ),
   # br(),
-  h4("Table Tab"),
+  h4("Download Tab"),
   p(
     "This tab enables the user to view the data in a tabular format.",
     "The table is interactive.",
-    "Each of the columns can be sorted by clicking on the column header",
+    "Each of the columns can be sorted by clicking on the column header.",
+    "and each column can be filtered by entering values into the text-boxes",
+    "located below the column headers.",
+    "A global table filter is available in the top right corner, which enables",
+    "the user to filter all columns using text or numeric values entered into this",
+    "text-box."
+  ),
+  p(
+    "Located below the table are two download buttons.",
+    'The "Download All Available Data" button allows the user to download all of the',
+    'data in the Water Quality Data Inventory.',
+    'The "Download Filtered Data" button allows the user to download the data',
+    'filtered by the "Filter" tab.',
+    tags$b('The data downloaded with this button is not influenced by the filters',
+           'applied in the "Table" tab.'),
+    "Those filters are just for exploring the tabular data."
+  ),
+  br(),
+  h4("Program Tab"),
+  p(
+    "This tab enables the user to view the data in a tabular format.",
+    "The table is interactive.",
+    "Each of the columns can be sorted by clicking on the column header.",
     "and each column can be filtered by entering values into the text-boxes",
     "located below the column headers.",
     "A global table filter is available in the top right corner, which enables",
