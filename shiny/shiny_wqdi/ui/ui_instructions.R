@@ -1,18 +1,19 @@
 tags$div(
   p(
     'To use this tool, click on the "Tabular" to filter and download the information about the water quality',
-    'monitoring efforts in the Potomac River Basin. Programs’ information includes key information about',
-    'the agency/organization responsible for maintaining and monitoring the data, location, and monitored',
+    "monitoring efforts in the Potomac River Basin. Programs' information includes information about",
+    'the agency/organization responsible for maintaining and monitoring the data, location, and monitoring',
     'data. Links to the monitoring program websites, and links to access monitoring data are included in the',
     "inventory."),
     
   p(
-    "There are Primary, Secondary and Tertiary filters available that help you narrow down your search.",
+    "There are primary, secondary and tertiary filters available that help you narrow down your search.",
     'To filter information (e.g. organization name, site location, data link, program website, and parameter',
-    'group) about the monitoring programs, you can select “Column” and “Options”. The “Program” tab',
-    'shows the filtered data in tabular format. To download the filtered data, click on the “Download” tab',
-    'and then “Download Program Data”. If no filter were selected, all the data in the Water Quality Data',
-    "Inventory will be shown and downloaded."
+    'group) about the monitoring programs, you can use "Column" and "Options".',
+    'The "Program" tab',
+    'shows the filtered data in tabular format. To download the filtered data, click on the "Download" tab',
+    'and then "Download" Program Data". If no filter were selected, all the data in the Water Quality Data',
+    "Inventory will be downloaded."
   )
   ####################################################################################
   #br(),

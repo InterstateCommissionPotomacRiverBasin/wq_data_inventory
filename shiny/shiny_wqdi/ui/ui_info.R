@@ -16,7 +16,7 @@ tags$div(
     "are appropriate for a particular use."
   ),
   tags$p(
-    'Visit the',
+    'You can visit the',
     tags$a(href = "https://www.potomacriver.org/focus-areas/water-quality/potomac-basin-water-quality-data-inventory/",
            "project page",
            target = "_blank"),
